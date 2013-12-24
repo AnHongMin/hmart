@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="Sample">
+
+<typeAlias alias="base" type="com.hmart.sample.service.SampleDto"/>
+<typeAlias alias="sample_member" type="com.hmart.sample.service.MemberDto"/>
+<typeAlias alias="sample_dept" type="com.hmart.sample.service.DeptDto"/>
+
+<!-- 목록 -->
+<select id="getSampleListCount" parameterClass="base" resultClass="int">
+	SELECT COUNT(*) FROM SAMPLE
+</select>
+
+<select id="getSampleList" parameterClass="base" resultClass="base">
+	SELECT *
+	FROM
+	(
+		SELECT ROWNUM RNUM,A.* FROM (
+			SELECT
+				*
+			FROM SAMPLE B
+			<isEqual property="_search" compareValue="true">
+				<isEqual property="searchOper" compareValue="eq">
+					<isNotEmpty property="searchString">
+					WHERE $searchField$ LIKE '%'||trim(#searchString#)||'%'
+					</isNotEmpty>
+				</isEqual>
+			</isEqual>		
+			<isEmpty property="sord">ORDER BY SEQ</isEmpty>
+			<isNotEmpty property="sord">
+				<isEqual property="sord" compareValue="desc"> ORDER BY $sidx$ $sord$ </isEqual>
+			</isNotEmpty>
+		) A
+	)
+	WHERE RNUM BETWEEN #startNum# AND #endNum#
+</select>
+
+<!-- 조회 -->
+<select id="getSample" parameterClass="base" resultClass="base">
+	SELECT *
+	FROM SAMPLE
+	WHERE SEQ = #seq#
+</select>
+
+<!-- 등록 -->
+<insert id="insertSample" parameterClass="base" >
+	INSERT INTO SAMPLE(
+		SEQ, 
+		SABUN, 
+		NAME,
+		CONTENT
+	) VALUES (
+		#seq#,
+		#sabun#,
+		#name#,
+		#content#
+	)
+</insert>
+
+<!-- 수정 -->
+<update id="updateSample" parameterClass="base">
+	UPDATE SAMPLE
+	SET SEQ = #seq#
+		<isNotNull property="sabun">,SABUN = #sabun#</isNotNull>
+		<isNotNull property="name">,NAME = #name#</isNotNull>
+		<isNotNull property="content">,CONTENT = #content#</isNotNull>
+	WHERE SEQ = #seq#
+</update>
+
+<!-- 고유키 -->
+<select id="getNewSeq" resultClass="long">SELECT SAMPLE_SQ.nextval FROM DUAL</select>
+
+<!-- 삭제 -->
+<delete id="deleteSample" parameterClass="string">
+<![CDATA[
+	DELETE FROM SAMPLE
+	WHERE SEQ = #seq#
+]]>
+</delete>
+
+<!-- 조직도 부서 목록 -->
+<select id="getDeptList" parameterClass="sample_dept" resultClass="sample_dept">
+	SELECT 
+		org_code,
+		org_name,
+		(
+			SELECT count(*) 
+	    	FROM TB_ORG b 
+	    	WHERE a.org_code = substr(b.org_code,0,length(a.org_code)) 
+	    	AND a.org_code != b.org_code 
+	    	AND b.org_flag IS NULL
+	  	) as count, 
+	  	org_upper_cd
+	FROM TB_ORG a
+	WHERE org_flag IS NULL 
+	<isNotEmpty property="searchString">
+	AND $searchField$ LIKE '%'||trim(#searchString#)||'%'
+	</isNotEmpty>
+	start with org_code='B'
+	connect by prior org_code = org_upper_cd 
+	order siblings by org_level
+</select>
+
+<!-- 조직도 사용자 목록 -->
+<select id="getMemberList" parameterClass="sample_member" resultClass="sample_member">
+	Select 
+		sabun, 
+		name, 
+		tel, 
+		decode(tel,null,'',substr(tel,-3,3)) line, 
+		hp, 
+	  	email,
+	  	org_name, 
+	  	contents,
+	  	picture,
+	  	upmu,
+	  	ip 
+	from TB_SAWON ts 
+	Inner Join TB_ORG tr 
+	on ts.org_code = tr.org_code
+	left outer Join TB_CODE tc 
+	on ts.jikgub_code = concat(tc.code_a,tc.code_b)
+	where ts.state_code != '0104'
+	<isNotEmpty property="searchString">
+	AND ts.$searchField$ LIKE '%'||trim(#searchString#)||'%'
+	</isNotEmpty>
+	order by imwon_check asc, captain_check asc, tc.jikgub_sequence asc, ts.sabun asc
+</select>
+
+<select id="getDeptMemberList" parameterClass="sample_dept" resultClass="sample_dept">
+	SELECT count, org_upper_cd, org_name, org_code
+	FROM
+	(
+		Select 
+			0 as count 
+			,tr.org_code as org_upper_cd
+    		,CAST(name AS VARCHAR(100)) org_name
+    		,CAST((ts.sabun || '|' || tr.org_code) AS VARCHAR(100)) org_code
+    		,tr.org_level
+    		,imwon_check
+    		,captain_check
+    		,tc.jikgub_sequence
+    		,CAST(ts.sabun AS VARCHAR(100)) sabun
+		from TB_SAWON ts 
+		Inner Join TB_ORG tr 
+		on ts.org_code = tr.org_code
+		left outer Join TB_CODE tc 
+		on ts.jikgub_code = concat(tc.code_a,tc.code_b)
+		where ts.state_code != '0104'
+   		UNION ALL
+  		SELECT 
+			1 as count
+	  		,org_upper_cd
+    		,org_name
+    		,org_code
+    		,ORG_LEVEL
+    		,'0' as imwon_check
+    		,'0' as captain_check
+    		,0 as jikgub_sequence
+    		,'0' as sabun
+		FROM TB_ORG a
+		WHERE org_flag IS NULL 
+		start with org_code='B'
+		connect by prior org_code = org_upper_cd 
+  	) A
+	ORDER BY ORG_LEVEL, count DESC, 
+	imwon_check asc, captain_check asc, jikgub_sequence asc, sabun asc
+</select>
+
+</sqlMap>

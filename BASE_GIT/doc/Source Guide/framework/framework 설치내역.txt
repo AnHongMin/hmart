@@ -1,0 +1,22 @@
+1. jdbc 및 트랜잭션 설정
+	- com/hmart/config/applicationContext.xml
+	- com/hmart/config/config.properties
+	
+2. sql 설정
+	- com/hmart/config/sql-map-config.xml
+	- com/hmart/config/dao/*.xml
+	- classpath:com/hmart/config/dao/*.xml
+	- classpath:com/hmart/config/impl/*.xml
+	
+3. controller 설정
+	- com/hmart/config/springmvc/controller.xml
+
+4. interceptor 설정
+	- com/hmart/config/springmvc/interceptor.xml
+
+5. multipart 설정
+	- com/hmart/config/config.properties
+	- com/hmart/config/springmvc/multipart.xml
+	
+6. velocity 설정
+	- com/hmart/config/springmvc/velocity.xml

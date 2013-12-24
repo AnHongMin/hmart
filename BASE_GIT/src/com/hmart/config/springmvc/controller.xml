@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans 
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context" 
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+						http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+						http://www.springframework.org/schema/context
+						http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+	
+	<bean id="methodNameResolver" class="org.springframework.web.servlet.mvc.multiaction.ParameterMethodNameResolver">
+		<property name="paramName">
+			<value>method</value>
+		</property>
+		
+		<property name="defaultMethodName" >
+			<value>list</value>
+		</property>
+	</bean>
+	
+	<bean id="urlMapping" class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+		<property name="interceptors">
+ 			<list>
+ 				<ref bean="sessionInterceptor" />
+ 			</list>
+ 		</property>
+		<property name="mappings">
+			<props>
+				<prop key="/sample.do">sampleController</prop>
+				<prop key="/organization.do">organizationController</prop>
+			</props>
+		</property>
+	</bean>
+	
+	<bean id="sampleController" class="com.hmart.sample.controller.SampleController">
+		<property name="methodNameResolver" ref="methodNameResolver" />
+		<property name="sampleImpl" ref="sampleImpl" />
+		<property name="fileImpl" ref="fileImpl" />		
+	</bean>
+	<bean id="organizationController" class="com.hmart.organization.controller.OrganizationController">
+		<property name="methodNameResolver" ref="methodNameResolver" />
+		<property name="organizationImpl" ref="organizationImpl" />
+	</bean>
+</beans>

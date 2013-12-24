@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta http-equiv="Cache-Control" content="no-cache" />
+<script src="/js/lib/ext-4.2.1.883/ext-all.js"></script>
+<script src="/js/lib/ext-4.2.1.883/ext-theme-neptune.js"></script>
+<link rel="stylesheet" href="/js/lib/ext-4.2.1.883/resources/css/ext-all-neptune.css" />
+<link rel="stylesheet" href="/js/lib/ext-4.2.1.883/resources/ext-theme-neptune/ext-theme-neptune-all.css" />
+</head>
+<body>
+	#include("vm/inc/extJs.vm")
+	<script type="text/javascript">
+		Ext.onReady(function() {
+			var store = Ext.create('Ext.data.TreeStore', {
+                root: {
+                    expanded: true,
+                    children: [
+                        { text: "Grid", expanded: true, children: [
+                            { text: "Summary", 				expanded: false, 	data_url:"/vm/extjs/grid/Summary.html" },
+                            { text: "RowBody", 				expanded: false, 	data_url:"/vm/extjs/grid/RowBody.html"},
+                            { text: "GroupingSummary", 		expanded: false,	data_url:"/vm/extjs/grid/GroupingSummary.html"},
+                            { text: "Grouping", 			expanded: false,	data_url:"/vm/extjs/grid/Grouping.html"},
+                            { text: "DragDrop", 			expanded: false, 	data_url:"/vm/extjs/grid/DragDrop.html"},
+                            { text: "RowEditing", 			expanded: false, 	data_url:"/vm/extjs/grid/RowEditing.html"},
+                            { text: "CellEditingView", 		expanded: false, 	data_url:"/vm/extjs/grid/CellEditingView.html"}
+                        ] }
+						,
+						{ text: "Chart", expanded: true, children: [
+                            { text: "scatter", 		expanded: false, 	data_url:"/vm/extjs/chart/scatter.html" },
+                            { text: "padar",		expanded: false, 	data_url:"/vm/extjs/chart/padar.html"},
+                            { text: "pie",			expanded: false, 	data_url:"/vm/extjs/chart/pie.html"},
+                            { text: "line",			expanded: false, 	data_url:"/vm/extjs/chart/line.html"},
+                            { text: "gauge",		expanded: false, 	data_url:"/vm/extjs/chart/gauge.html"},
+                            { text: "column",		expanded: false, 	data_url:"/vm/extjs/chart/column.html"},
+                            { text: "bar",			expanded: false, 	data_url:"/vm/extjs/chart/Bar.html"},
+                            { text: "category",		expanded: false, 	data_url:"/vm/extjs/chart/category.html"}
+                        ] }
+						
+                    ]
+                }
+            });
+            
+            Ext.create('Ext.tree.Panel', {
+                title: 'Simple Tree',
+                store: store,
+                rootVisible: false,
+                renderTo: Ext.getBody(),
+				listeners : {
+				/*
+					render : function(tp) {
+		    			tp.getSelectionModel().on('selectionchange', function( tree, node ){
+							Ext.Msg.alert('MSG', node[0].raw.url);
+							//location.href=node[0].raw.url;
+		    			});		    			
+	    		    }
+					*/
+					itemclick : function( obj, record, item, index, e, eOpts ){
+						location.href=record.raw.data_url;
+						/*
+                		var dynamicPanel = new Ext.Component({
+                          loader: {
+                           id : record.get('id'),
+                           url: record.get('url'),
+                           renderer: 'html',
+                           autoLoad: true,
+                           scripts: true
+                          }
+                         });
+                         Ext.getCmp('center-panel').removeAll();
+                         Ext.getCmp('center-panel').add(dynamicPanel);
+						 */
+					}
+				}
+            });
+		}); // end onReady
+	</script>
+</body>
+</html>

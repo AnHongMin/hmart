@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="Cache-Control" content="no-cache" />
+<script src="/js/lib/ext-4.2.1.883/ext-all.js"></script>
+<script src="/js/lib/ext-4.2.1.883/ext-theme-neptune.js"></script>
+<link rel="stylesheet"
+	href="/js/lib/ext-4.2.1.883/resources/css/ext-all-neptune.css" />
+<link rel="stylesheet"
+	href="/js/lib/ext-4.2.1.883/resources/ext-theme-neptune/ext-theme-neptune-all.css" />
+
+</head>
+<body>
+	<div id="smc-search"></div>
+	<div id="smc-body"></div>
+
+	<script type="text/javascript">
+		Ext.onReady(function() {
+			Ext.create('Ext.data.Store', {
+			    storeId:'simpsonsStore',
+			    fields:['name'],
+			    data: [["Lisa"], ["Bart"], ["Homer"], ["Marge"]],
+			    proxy: {
+			        type: 'memory',
+			        reader: 'array'
+			    }
+			});
+
+			Ext.create('Ext.grid.Panel', {
+			    store: 'simpsonsStore',
+			    columns: [
+			        {header: 'Name',  dataIndex: 'name', flex: true}
+			    ],
+			    
+			    // drag & drop 컴포넌트
+			    viewConfig: {
+			        plugins: {
+			            ptype: 'gridviewdragdrop',
+			            dragText: 'Drag and drop to reorganize'
+			        }
+			    },
+			    
+			    height: 200,
+			    width: 400,
+			    renderTo: Ext.getBody()
+			});
+		}); // end onReady
+	</script>
+</body>
+</html>

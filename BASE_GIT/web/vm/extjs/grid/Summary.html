@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="Cache-Control" content="no-cache" />
+<script src="/js/lib/ext-4.2.1.883/ext-all.js"></script>
+<script src="/js/lib/ext-4.2.1.883/ext-theme-neptune.js"></script>
+<link rel="stylesheet"
+	href="/js/lib/ext-4.2.1.883/resources/css/ext-all-neptune.css" />
+<link rel="stylesheet"
+	href="/js/lib/ext-4.2.1.883/resources/ext-theme-neptune/ext-theme-neptune-all.css" />
+
+</head>
+<body>
+	<script type="text/javascript">
+		Ext.onReady(function() {
+			Ext.define('TestResult', {
+			    extend: 'Ext.data.Model',
+			    fields: ['student', {
+			        name: 'mark',
+			        type: 'int'
+			    }]
+			});
+
+			Ext.create('Ext.grid.Panel', {
+			    width: 400,
+			    height: 200,
+			    title: 'Summary Test',
+			    style: 'padding: 20px',
+			    renderTo: document.body,
+			    
+			    // summary 기능 설정
+			    features: [{
+			        ftype: 'summary'
+			    }],
+			    
+			    store: {
+			        model: 'TestResult',
+			        data: [{
+			            student: 'Student 1',
+			            mark: 84
+			        },{
+			            student: 'Student 2',
+			            mark: 72
+			        },{
+			            student: 'Student 3',
+			            mark: 96
+			        },{
+			            student: 'Student 4',
+			            mark: 68
+			        }]
+			    },
+			    columns: [{
+			        dataIndex: 'student',
+			        text: 'Name',
+			        // summary 형식 지정
+			        summaryType: 'count',
+			        summaryRenderer: function(value, summaryData, dataIndex) {
+			            return Ext.String.format('{0} student{1}', value, value !== 1 ? 's' : ''); 
+			        }
+			    }, {
+			    	// summary 필드 및 타입 지정
+			        dataIndex: 'mark',
+			        text: 'Mark',
+			        summaryType: 'average'
+			    }]
+			});
+		}); // end onReady
+	</script>
+</body>
+</html>

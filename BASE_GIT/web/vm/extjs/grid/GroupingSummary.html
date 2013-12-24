@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="Cache-Control" content="no-cache" />
+<script src="/js/lib/ext-4.2.1.883/ext-all.js"></script>
+<script src="/js/lib/ext-4.2.1.883/ext-theme-neptune.js"></script>
+<link rel="stylesheet"
+	href="/js/lib/ext-4.2.1.883/resources/css/ext-all-neptune.css" />
+<link rel="stylesheet"
+	href="/js/lib/ext-4.2.1.883/resources/ext-theme-neptune/ext-theme-neptune-all.css" />
+
+</head>
+<body>
+	<div id="smc-search"></div>
+	<div id="smc-body"></div>
+
+	<script type="text/javascript">
+		Ext.onReady(function() {
+			Ext.define('TestResult', {
+				extend : 'Ext.data.Model',
+				fields : [ 'student', 'subject', {
+					name : 'mark',
+					type : 'int'
+				} ]
+			});
+
+			Ext.create('Ext.grid.Panel', {
+				width : 200,
+				height : 240,
+				renderTo : document.body,
+				
+				// 그룹 기능 설정
+				features : [ {
+					groupHeaderTpl : 'Subject: {name}',
+					ftype : 'groupingsummary'
+				} ],
+				
+				store : {
+					model : 'TestResult',
+					
+					// 그룹 필드 설정
+					groupField : 'subject',
+					data : [ {
+						student : 'Student 1',
+						subject : 'Science',
+						mark : 72
+					}, {
+						student : 'Student 2',
+						subject : 'Math',
+						mark : 96
+					}, {
+						student : 'Student 2',
+						subject : 'Science',
+						mark : 68
+					} ]
+				},
+				
+				columns : [
+						{
+							dataIndex : 'student',
+							text : 'Name',
+							summaryType : 'count',
+							// summary 문자열 표기 방식 설정
+							summaryRenderer : function(value) {
+								return Ext.String.format('{0} student{1}',
+										value, value !== 1 ? 's' : '');
+							}
+						}, {
+							dataIndex : 'mark',
+							text : 'Mark',
+							summaryType : 'average'
+						} ]
+			});
+		}); // end onReady
+	</script>
+</body>
+</html>

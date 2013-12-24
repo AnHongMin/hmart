@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="Cache-Control" content="no-cache" />
+<script src="/js/lib/ext-4.2.1.883/ext-all.js"></script>
+<script src="/js/lib/ext-4.2.1.883/ext-theme-neptune.js"></script>
+<link rel="stylesheet"
+	href="/js/lib/ext-4.2.1.883/resources/css/ext-all-neptune.css" />
+<link rel="stylesheet"
+	href="/js/lib/ext-4.2.1.883/resources/ext-theme-neptune/ext-theme-neptune-all.css" />
+
+</head>
+<body>
+	<div id="smc-search"></div>
+	<div id="smc-body"></div>
+
+	<script type="text/javascript">
+		Ext.onReady(function() {
+			var store = Ext.create('Ext.data.Store', {
+			    storeId:'employeeStore',
+			    fields:['name', 'seniority', 'department'],
+			    
+			    // 그룹 필드 설정
+			    groupField: 'department',
+			    
+			    data: {'employees':[
+			        { "name": "Michael Scott",  "seniority": 7, "department": "Management" },
+			        { "name": "Dwight Schrute", "seniority": 2, "department": "Sales" },
+			        { "name": "Jim Halpert",    "seniority": 3, "department": "Sales" },
+			        { "name": "Kevin Malone",   "seniority": 4, "department": "Accounting" },
+			        { "name": "Angela Martin",  "seniority": 5, "department": "Accounting" }
+			    ]},
+			    
+			    
+			    proxy: {
+			        type: 'memory',
+			        reader: {
+			            type: 'json',
+			            root: 'employees'
+			        }
+			    }
+			});
+
+			Ext.create('Ext.grid.Panel', {
+			    title: 'Employees',
+			    store: Ext.data.StoreManager.lookup('employeeStore'),
+			    columns: [
+			        { text: 'Name',     dataIndex: 'name' },
+			        { text: 'Seniority', dataIndex: 'seniority' }
+			    ],
+			    
+			    // 그룹 기능 설정
+			    features: [{ftype:'grouping'}],
+			    
+			    
+			    width: 200,
+			    height: 275,
+			    renderTo: Ext.getBody()
+			});
+		}); // end onReady
+	</script>
+</body>
+</html>

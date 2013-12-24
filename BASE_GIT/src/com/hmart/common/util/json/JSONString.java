@@ -1,0 +1,25 @@
+package com.hmart.common.util.json;
+
+
+// TODO: Auto-generated Javadoc
+/**
+ * The <code>JSONString</code> interface allows a <code>toJSONString()</code>
+ * method so that a class can change the behavior of
+ * <code>JSONObject.toString()</code>, <code>JSONArray.toString()</code>,
+ * and <code>JSONWriter.value(</code>Object<code>)</code>. The
+ * <code>toJSONString</code> method will be used instead of the default behavior
+ * of using the Object's <code>toString()</code> method and quoting the result.
+ *
+ * @version stable_5.0
+ * @author naonsoft
+ * @see
+ */
+public interface JSONString {
+	/**
+	 * The <code>toJSONString</code> method allows a class to produce its own JSON 
+	 * serialization. 
+	 * 
+	 * @return A strictly syntactically correct JSON text.
+	 */
+	public String toJSONString();
+}

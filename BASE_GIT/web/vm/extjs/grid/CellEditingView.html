@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="Cache-Control" content="no-cache" />
+<script src="/js/lib/ext-4.2.1.883/ext-all.js"></script>
+<script src="/js/lib/ext-4.2.1.883/ext-theme-neptune.js"></script>
+<link rel="stylesheet"
+	href="/js/lib/ext-4.2.1.883/resources/css/ext-all-neptune.css" />
+<link rel="stylesheet"
+	href="/js/lib/ext-4.2.1.883/resources/ext-theme-neptune/ext-theme-neptune-all.css" />
+
+</head>
+<body>
+	<div id="smc-search"></div>
+	<div id="smc-body"></div>
+
+	<script type="text/javascript">
+	<!-- Ext.grid.plugin.CellEditingView source... -->
+		Ext.onReady(function() {
+			Ext.create('Ext.data.Store', {
+				storeId : 'simpsonsStore',
+				fields : [ 'name', 'email', 'phone' ],
+				data : {
+					'items' : [ {
+						"name" : "Lisa",
+						"email" : "lisa@simpsons.com",
+						"phone" : "555-111-1224"
+					}, {
+						"name" : "Bart",
+						"email" : "bart@simpsons.com",
+						"phone" : "555-222-1234"
+					}, {
+						"name" : "Homer",
+						"email" : "home@simpsons.com",
+						"phone" : "555-222-1244"
+					}, {
+						"name" : "Marge",
+						"email" : "marge@simpsons.com",
+						"phone" : "555-222-1254"
+					} ]
+				},
+				proxy : {
+					type : 'memory',
+					reader : {
+						type : 'json',
+						root : 'items'
+					}
+				}
+			});
+
+			Ext.create('Ext.grid.Panel', {
+				title : 'Simpsons',
+				store : Ext.data.StoreManager.lookup('simpsonsStore'),
+				columns : [ {
+					header : 'Name',
+					dataIndex : 'name',
+					// 셀 수정가능
+					editor : 'textfield'					
+				}, {
+					header : 'Email',
+					dataIndex : 'email',
+					flex : 1,
+					// 셀 수정가능
+					editor : {
+						xtype : 'textfield',
+						allowBlank : false
+					}
+				}, {
+					header : 'Phone',
+					dataIndex : 'phone'
+				} ],
+				selType : 'cellmodel',
+				
+				// 셀 수정가능
+				plugins : [ Ext.create('Ext.grid.plugin.CellEditing', {
+					clicksToEdit : 1
+				}) ],
+				
+				height : 200,
+				width : 400,
+				renderTo : Ext.getBody()
+			});
+		}); // end onReady
+	</script>
+</body>
+</html>

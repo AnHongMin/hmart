@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMapConfig PUBLIC "-//ibatis.apache.org//DTD SQL Map Config 2.0//EN"
+    "http://ibatis.apache.org/dtd/sql-map-config-2.dtd">
+
+<sqlMapConfig>
+	<settings enhancementEnabled="true" useStatementNamespaces="true" />
+<!-- <settings -->
+<!--     cacheModelsEnabled="true" -->
+<!--     enhancementEnabled="true" -->
+<!--     lazyLoadingEnabled="true" -->
+<!--     maxRequests="200" -->
+<!--     maxSessions="50" -->
+<!--     maxTransactions="5" -->
+<!--     useStatementNamespaces="false" -->
+<!-- /> -->
+<!--   <transactionManager type="JDBC"> -->
+<!--     <dataSource type="SIMPLE"> -->
+<!--       <property value="core.log.jdbc.driver.OracleDriver" name="JDBC.Driver"/> -->
+<!--       <property value="jdbc:oracle:thin:@211.111.222.70:1521:DB" name="JDBC.ConnectionURL"/> -->
+<!--       <property value="open" name="JDBC.Username"/> -->
+<!--       <property value="dnpqroqkf" name="JDBC.Password"/> -->
+<!--     </dataSource> -->
+<!--   </transactionManager> -->
+	<!-- 샘플 -->
+	<sqlMap resource="com/hmart/sqlmap/Sample.xml"/>
+	<sqlMap resource="com/hmart/sqlmap/File.xml"/>
+	
+	<!-- 조직도 -->
+	<sqlMap resource="com/hmart/sqlmap/Organization.xml"/>
+</sqlMapConfig>
