@@ -1,0 +1,30 @@
+{ 
+text: '.',
+children: [{
+    text:'Grid',
+    expanded: true,
+    children:[
+		 { "text": "Summary", 			leaf:true,	"data_url":"/vm/extjs/grid/Summary.html" }
+		 ,{ "text": "RowBody", 			leaf:true,	"data_url":"/vm/extjs/grid/RowBody.html"}
+         ,{ "text": "GroupingSummary", 	leaf:true,	"data_url":"/vm/extjs/grid/GroupingSummary.html"}
+         ,{ "text": "Grouping", 		leaf:true,	"data_url":"/vm/extjs/grid/Grouping.html"}
+         ,{ "text": "DragDrop", 		leaf:true,	"data_url":"/vm/extjs/grid/DragDrop.html"}
+         ,{ "text": "RowEditing", 		leaf:true,	"data_url":"/vm/extjs/grid/RowEditing.html"}
+         ,{ "text": "CellEditingView", 	leaf:true,	"data_url":"/vm/extjs/grid/CellEditingView.html"}
+		
+	]
+}
+,{
+    text:'Chart',
+    children:[
+		{ "text": "scatter", 	leaf:true,	"data_url":"/vm/extjs/chart/scatter.html" },
+        { "text": "padar",		leaf:true,	"data_url":"/vm/extjs/chart/padar.html"},
+        { "text": "pie",		leaf:true,	"data_url":"/vm/extjs/chart/pie.html"},
+        { "text": "line",		leaf:true,	"data_url":"/vm/extjs/chart/line.html"},
+        { "text": "gauge",		leaf:true,	"data_url":"/vm/extjs/chart/gauge.html"},
+        { "text": "column",		leaf:true,	"data_url":"/vm/extjs/chart/column.html"},
+        { "text": "bar",		leaf:true,	"data_url":"/vm/extjs/chart/Bar.html"},
+        { "text": "category",	leaf:true,	"data_url":"/vm/extjs/chart/category.html"}
+	]
+}]
+}
