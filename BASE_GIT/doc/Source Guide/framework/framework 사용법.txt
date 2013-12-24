@@ -1,3 +1,4 @@
+test
 1. 공통 유틸 구현
 	- Class : com/hmart/common/
 	- Js : web/js/common/
