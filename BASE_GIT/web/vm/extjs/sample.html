@@ -5,10 +5,8 @@
 <meta http-equiv="Cache-Control" content="no-cache" />
 <script src="/js/lib/ext-4.2.1.883/ext-all.js"></script>
 <script src="/js/lib/ext-4.2.1.883/ext-theme-neptune.js"></script>
-<link rel="stylesheet"
-	href="/js/lib/ext-4.2.1.883/resources/css/ext-all-neptune.css" />
-<link rel="stylesheet"
-	href="/js/lib/ext-4.2.1.883/resources/ext-theme-neptune/ext-theme-neptune-all.css" />
+<link rel="stylesheet" href="/js/lib/ext-4.2.1.883/resources/css/ext-all-neptune.css" />
+<link rel="stylesheet" href="/js/lib/ext-4.2.1.883/resources/ext-theme-neptune/ext-theme-neptune-all.css" />
 
 </head>
 <body>
@@ -94,11 +92,8 @@
 					{
 						text : 'DEL',
 						handler : function() {
-							
-							var smc_selected = Ext.getCmp('test-grid').getSelectionModel().getSelection();
-							
-							Ext.getCmp('test-grid').getStore().remove(smc_selected);
-
+							var row_selected = Ext.getCmp('test-grid').getSelectionModel().getSelection();
+							Ext.getCmp('test-grid').getStore().remove(row_selected);
 						}
 					} 
 				]

@@ -16,6 +16,7 @@ children: [{
 }
 ,{
     text:'Chart',
+	
     children:[
 		{ "text": "scatter", 	leaf:true,	"data_url":"/vm/extjs/chart/scatter.html" },
         { "text": "padar",		leaf:true,	"data_url":"/vm/extjs/chart/padar.html"},
