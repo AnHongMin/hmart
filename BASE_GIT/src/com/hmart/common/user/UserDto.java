@@ -4,10 +4,10 @@ import java.io.Serializable;
 
 /**
  * 사용자 정보를 담는 자바 bean 클래스
+ * 
+ * @author hongmin.an
  *
- * @author 안홍민
  */
-
 @SuppressWarnings("serial")
 public class UserDto implements Serializable,Cloneable {
 

@@ -22,12 +22,12 @@ import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
 
-
 /**
+ * 
  * 파일&디렉토리의 copy,delete,move,mkdir,exists 메소드.
+ * 
+ * @author hongmin.an
  *
- * @author 안홍민
- * @version 1.0
  */
 public class FileUtil {
 

@@ -13,10 +13,10 @@ import org.springframework.web.servlet.mvc.multiaction.MultiActionController;
 
 /**
  * 
- * @author 안홍민
+ * 
+ * @author hongmin.an
  *
  */
-
 public class DispatchAction extends MultiActionController{
 	/**
 	 * Ajax Response 위한 함수.

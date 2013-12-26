@@ -6,12 +6,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 /**
- * 이 클래스에는 세션에 담겨 있는 정보를 핸들링 하기위한 함수들이 정의 되어 있다.
- *
- * @author 안홍민
  * 
+ * 이 클래스에는 세션에 담겨 있는 정보를 핸들링 하기위한 함수들이 정의 되어 있다.
+ * 
+ * @author hongmin.an
+ *
  */
-
 @SuppressWarnings("serial")
 public class SessionUtil  implements Serializable {
 	

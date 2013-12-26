@@ -33,10 +33,9 @@ import com.hmart.sample.service.SampleService;
  * 
  * 샘플 컨트롤러
  * 
- * @author 안홍민
+ * @author hongmin.an
  *
  */
-
 @Controller
 public class SampleController extends DispatchAction{
 	/** logger. */
@@ -53,17 +52,6 @@ public class SampleController extends DispatchAction{
 
 	public void setFileImpl(FileService fileImpl) {
 		this.fileImpl = fileImpl;
-	}
-	
-	/**
-	 * hansontable
-	 * @param req HttpServletRequest
-	 * @param res HttpServletResponse
-	 * @return
-	 * @throws Exception
-	 */
-	public void hansontable(HttpServletRequest req, HttpServletResponse res) throws Exception{
-		//String data = req.getParameter("data");
 	}
 	
 	/**

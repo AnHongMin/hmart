@@ -5,6 +5,13 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
+/**
+ * 
+ * HTTP responsebody 문자열 scan 객체
+ * 
+ * @author hongmin.an
+ *
+ */
 public class HttpUtil {
 	
 	public static String getHttpResult(String Url){

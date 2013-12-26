@@ -13,12 +13,12 @@ import org.w3c.dom.NodeList;
 import org.xml.sax.InputSource;
 
 /**
+ * 
  * XML데이터 분석하여 데이터를 도출한다.
  * XML데이터를 DOM방식으로 데이터를 파싱하여 데이터를 추출한다.
  * 
- * @author 
- * @version 1.0
- * @since 1.0
+ * @author hongmin.an
+ *
  */
 public class XmlParseData {
 	private Document document=null;

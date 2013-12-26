@@ -9,7 +9,6 @@ import java.util.Map;
 
 import org.apache.commons.beanutils.PropertyUtils;
 
-// TODO: Auto-generated Javadoc
 /**
  * 객체를 reflection을 이용해서 JSON 객체로 변환한다.
  * @author dagui

@@ -10,11 +10,10 @@ import org.apache.log4j.Logger;
 
 /**
  * 
- * 웹요청 정보를 Console에 출력합니다. 웹요청의 헤더값과 파라미터 값을 Console에 출력합니다. 
+ * 웹요청 정보를 Console에 출력합니다. 웹요청의 헤더값과 파라미터 값을 Console에 출력합니다.
  * 
- * @author 안홍민
- * @since 
- * @version 0.0.1
+ * @author hongmin.an
+ *
  */
 public class RequestPrint {
 
