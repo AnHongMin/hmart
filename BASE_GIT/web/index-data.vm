@@ -1,0 +1,54 @@
+{ 
+text: '.',
+children: [{
+    text:'Grid',
+    //expanded: true,
+    children:[
+		 { "text": "Summary", 			leaf:true,	"data_url":"/vm/extjs/grid/Summary.html" }
+		 ,{ "text": "RowBody", 			leaf:true,	"data_url":"/vm/extjs/grid/RowBody.html"}
+         ,{ "text": "GroupingSummary", 	leaf:true,	"data_url":"/vm/extjs/grid/GroupingSummary.html"}
+         ,{ "text": "Grouping", 		leaf:true,	"data_url":"/vm/extjs/grid/Grouping.html"}
+         ,{ "text": "DragDrop", 		leaf:true,	"data_url":"/vm/extjs/grid/DragDrop.html"}
+         ,{ "text": "RowEditing", 		leaf:true,	"data_url":"/vm/extjs/grid/RowEditing.html"}
+         ,{ "text": "CellEditingView", 	leaf:true,	"data_url":"/vm/extjs/grid/CellEditingView.html"}
+		
+	]
+}
+,{
+    text:'Chart',
+	expanded: true,
+    children:[
+		{ "text": "Area", 				leaf:true,	"data_url":"/js/lib/ext-4.2.1.883/examples/charts/Area.html" },
+		{ "text": "AreaBrowserStats", 	leaf:true,	"data_url":"/js/lib/ext-4.2.1.883/examples/charts/AreaBrowserStats.html" },
+		{ "text": "Bar", 				leaf:true,	"data_url":"/js/lib/ext-4.2.1.883/examples/charts/Bar.html" },
+		{ "text": "BarRenderer", 		leaf:true,	"data_url":"/js/lib/ext-4.2.1.883/examples/charts/BarRenderer.html" },
+		{ "text": "Charts", 			leaf:true,	"data_url":"/js/lib/ext-4.2.1.883/examples/charts/Charts.html" },
+		{ "text": "Column", 			leaf:true,	"data_url":"/js/lib/ext-4.2.1.883/examples/charts/Column.html" },
+		{ "text": "Column2", 			leaf:true,	"data_url":"/js/lib/ext-4.2.1.883/examples/charts/Column2.html" },
+		{ "text": "FormDashboard", 		leaf:true,	"data_url":"/js/lib/ext-4.2.1.883/examples/charts/FormDashboard.html" },
+		{ "text": "GroupedBar", 		leaf:true,	"data_url":"/js/lib/ext-4.2.1.883/examples/charts/GroupedBar.html" },
+		{ "text": "Line", 				leaf:true,	"data_url":"/js/lib/ext-4.2.1.883/examples/charts/Line.html" },
+		{ "text": "LiveAnimated", 		leaf:true,	"data_url":"/js/lib/ext-4.2.1.883/examples/charts/LiveAnimated.html" },
+		{ "text": "LiveUpdates", 		leaf:true,	"data_url":"/js/lib/ext-4.2.1.883/examples/charts/LiveUpdates.html" },
+		{ "text": "Mixed", 				leaf:true,	"data_url":"/js/lib/ext-4.2.1.883/examples/charts/Mixed.html" },
+		{ "text": "Pie", 				leaf:true,	"data_url":"/js/lib/ext-4.2.1.883/examples/charts/Pie.html" },
+		{ "text": "PieRenderer", 		leaf:true,	"data_url":"/js/lib/ext-4.2.1.883/examples/charts/PieRenderer.html" },
+		{ "text": "Radar", 				leaf:true,	"data_url":"/js/lib/ext-4.2.1.883/examples/charts/Radar.html" },
+		{ "text": "RadarFill", 			leaf:true,	"data_url":"/js/lib/ext-4.2.1.883/examples/charts/RadarFill.html" },
+		{ "text": "ReloadChart", 		leaf:true,	"data_url":"/js/lib/ext-4.2.1.883/examples/charts/ReloadChart.html" },
+		{ "text": "ScatterRenderer", 	leaf:true,	"data_url":"/js/lib/ext-4.2.1.883/examples/charts/ScatterRenderer.html" },
+		{ "text": "StackedBar", 		leaf:true,	"data_url":"/js/lib/ext-4.2.1.883/examples/charts/StackedBar.html" },
+		{ "text": "TipsChart", 			leaf:true,	"data_url":"/js/lib/ext-4.2.1.883/examples/charts/TipsChart.html" },
+		
+		
+		{ "text": "scatter", 			leaf:true,	"data_url":"/vm/extjs/chart/scatter.html" },
+        { "text": "padar",				leaf:true,	"data_url":"/vm/extjs/chart/padar.html"},
+        { "text": "pie",				leaf:true,	"data_url":"/vm/extjs/chart/pie.html"},
+        { "text": "line",				leaf:true,	"data_url":"/vm/extjs/chart/line.html"},
+        { "text": "gauge",				leaf:true,	"data_url":"/vm/extjs/chart/gauge.html"},
+        { "text": "column",				leaf:true,	"data_url":"/vm/extjs/chart/column.html"},
+        { "text": "bar",				leaf:true,	"data_url":"/vm/extjs/chart/Bar.html"},
+        { "text": "category",			leaf:true,	"data_url":"/vm/extjs/chart/category.html"}
+	]
+}]
+}
