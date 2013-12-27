@@ -119,16 +119,16 @@ Ext.onReady(function() {
 		store : Ext.data.StoreManager.lookup('gridStore'),
 		collapsible:false,
 		columns : [ 
-				{ text : 'OPERATOR', dataIndex : 'operator'}
-				,{text : 'TRANSTION', dataIndex : 'transaction'}
-				,{text : 'RINGTIME', dataIndex : 'ringtime',
+				{ text : 'OPERATOR', 	dataIndex : 'operator'},
+				{ text : 'TRANSTION', 	dataIndex : 'transaction'},
+				{ text : 'RINGTIME', 	dataIndex : 'ringtime',
 					renderer : function(value) {
 						var tmpl = "<div style=\"color:red\">{0}</div>";
 						return Ext.String.format(tmpl, value);
 					}
-				}
-				,{text : 'NET', dataIndex : 'net'}
-				,{text : 'ITEM', dataIndex : 'item'}
+				},
+				{ text : 'NET', 		dataIndex : 'net'},
+				{ text : 'ITEM', 		dataIndex : 'item'}
 		]
 		,listeners : {
 			celldblclick : function(obj, td, cellIndex, record, tr, rowIndex, e, eOpts) {
