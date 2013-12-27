@@ -55,15 +55,30 @@ public class SampleController extends DispatchAction{
 	}
 	
 	/**
-	 * calendar
+	 * test
 	 * @param req HttpServletRequest
 	 * @param res HttpServletResponse
 	 * @return
 	 * @throws Exception
 	 */
-	public ModelAndView calendar(HttpServletRequest req, HttpServletResponse res) throws Exception{
+	public ModelAndView test(HttpServletRequest req, HttpServletResponse res) throws Exception{
+		RequestPrint.printRequestInfo(req);
 		ModelAndView mav = new ModelAndView();
-		mav.setViewName("sample/calendar");
+		mav.setViewName("sample/test");
+		return mav;
+	}
+	
+	/**
+	 * test
+	 * @param req HttpServletRequest
+	 * @param res HttpServletResponse
+	 * @return
+	 * @throws Exception
+	 */
+	public ModelAndView testData(HttpServletRequest req, HttpServletResponse res) throws Exception{
+		RequestPrint.printRequestInfo(req);
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("sample/testData");
 		return mav;
 	}
 	
