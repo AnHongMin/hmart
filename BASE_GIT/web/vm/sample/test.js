@@ -103,8 +103,8 @@ Ext.onReady(function() {
 		},
 		fields : [ 
 			'operator' 
-			,{ name : 'transaction', type : 'float' } 
-			,{ name : 'ringtime', type : 'float' }
+			,{ name : 'transaction', 	type : 'float' } 
+			,{ name : 'ringtime', 		type : 'float' }
 			,'net'
 			,'item'
 		],
@@ -179,7 +179,8 @@ Ext.onReady(function() {
 		]
 	});
 	
-	// 차트 sales_topChart
+	// 차트 
+	// sales_topChart
     
     
 });
