@@ -38,33 +38,33 @@ Ext.onReady(function() {
                 	        	  columnWidth : .3,
                 	        	  items : [{
                 	        		  xtype: 'combobox',		
-                	        		  fieldLabel: 'State',		
-                	        		  name: 'searchState',	
-                	        		  anchor:'95%',	
-                	        		  store:hr_states,	
-                	        		  displayField:'value',	
-                	        		  valueField:'key'        	        			
+                	        		  fieldLabel: 'State',
+                	        		  name: 'searchState',
+                	        		  anchor:'95%',
+                	        		  store:hr_states,
+                	        		  displayField:'value',
+                	        		  valueField:'key'
                 	        	  },{
-                	        		  xtype: 'datefield',		
-                	        		  fieldLabel: 'Date From',	
-                	        		  name: 'searchDateFrom',	
+                	        		  xtype: 'datefield',
+                	        		  fieldLabel: 'Date From',
+                	        		  name: 'searchDateFrom',
                 	        		  anchor:'95%'
                 	        	  }]
                 	          },{
                 	        	  xtype : 'container',
                 	        	  columnWidth : .3,
                 	        	  items : [{
-                	        		  xtype: 'combobox',		
-                	        		  fieldLabel: 'Branch',		
-                	        		  name: 'searchBrach',	
-                	        		  anchor:'95%', 	
-                	        		  store:hr_branchs,	
-                	        		  displayField:'value',	
+                	        		  xtype: 'combobox',
+                	        		  fieldLabel: 'Branch',
+                	        		  name: 'searchBrach',
+                	        		  anchor:'95%',
+                	        		  store:hr_branchs,
+                	        		  displayField:'value',
                 	        		  valueField:'key'
                 	        	  },{
-                	        		  xtype: 'datefield',		
-                	        		  fieldLabel: 'Date To',		
-                	        		  name: 'searchDateTo',	
+                	        		  xtype: 'datefield',
+                	        		  fieldLabel: 'Date To',
+                	        		  name: 'searchDateTo',
                 	        		  anchor:'95%'
                 	        	  }]
                 	          },{
@@ -72,7 +72,7 @@ Ext.onReady(function() {
                 	        	  columnWidth : .3,
                 	        	  items: [{
                 	        		  xtype: 'button',
-                	        		  text: 'SEARCH',    	 
+                	        		  text: 'SEARCH',
                 	        		  width : 200,
                 	        		  handler: function() {
                 	        			  var form = this.up('form').getForm();
@@ -87,7 +87,7 @@ Ext.onReady(function() {
                 	        			  }
                 	        		  }
                 	        	  },{
-                	        		  xtype: 'button',    	                	
+                	        		  xtype: 'button',
                 	        		  text: 'RESET',
                 	        		  width : 200,
                 	        		  handler: function() {
@@ -100,65 +100,65 @@ Ext.onReady(function() {
                 	        	  xtype : 'fieldcontainer',
                 	        	  defaultType: 'checkboxfield',
                 	        	  items: [{
-                	        	        	  boxLabel : 'All',			
-                	        	        	  name : 'searchDateType',		
-                	        	        	  inputValue : '0',	
+                	        	        	  boxLabel : 'All',
+                	        	        	  name : 'searchDateType',
+                	        	        	  inputValue : '0',
                 	        	        	  id : 'checkbox0'
+                	        	          }, {
+                	        	        	  xtype: 'displayfield',
+                	        	        	  width : 10
                 	        	          }, {                                                                       
-                	        	        	  xtype: 'displayfield',	
-                	        	        	  width : 10							       
-                	        	          }, {                                                                       
-                	        	        	  boxLabel : 'MON',			
-                	        	        	  name : 'searchDateType',		
-                	        	        	  inputValue : '1',	
+                	        	        	  boxLabel : 'MON',
+                	        	        	  name : 'searchDateType',
+                	        	        	  inputValue : '1',
                 	        	        	  id : 'checkbox1'
                 	        	          }, {                                                                       
-                	        	        	  xtype: 'displayfield',		
-                	        	        	  width : 10							       
+                	        	        	  xtype: 'displayfield',
+                	        	        	  width : 10
                 	        	          }, {                                                                       
-                	        	        	  boxLabel : 'TUE',			
-                	        	        	  name : 'searchDateType',		
-                	        	        	  inputValue : '2',	
+                	        	        	  boxLabel : 'TUE',
+                	        	        	  name : 'searchDateType',
+                	        	        	  inputValue : '2',
                 	        	        	  id : 'checkbox2'
                 	        	          }, {                                                                       
-                	        	        	  xtype: 'displayfield',		
-                	        	        	  width : 10							       
-                	        	          }, {                                                                       
-                	        	        	  boxLabel : 'WED',			
-                	        	        	  name : 'searchDateType',		
-                	        	        	  inputValue : '3',	
+                	        	        	  xtype: 'displayfield',
+                	        	        	  width : 10
+                	        	          }, {
+                	        	        	  boxLabel : 'WED',
+                	        	        	  name : 'searchDateType',
+                	        	        	  inputValue : '3',
                 	        	        	  id : 'checkbox3'
-                	        	          }, {                                                                       
-                	        	        	  xtype: 'displayfield',		
-                	        	        	  width : 10                                 
-                	        	          }, {                                                                       
-                	        	        	  boxLabel : 'THU',			
-                	        	        	  name : 'searchDateType',		
-                	        	        	  inputValue : '4',	
+                	        	          }, {
+                	        	        	  xtype: 'displayfield',
+                	        	        	  width : 10
+                	        	          }, {
+                	        	        	  boxLabel : 'THU',
+                	        	        	  name : 'searchDateType',
+                	        	        	  inputValue : '4',
                 	        	        	  id : 'checkbox4'
                 	        	          }, {
-                	        	        	  xtype: 'displayfield',		
-                	        	        	  width : 10							       
-                	        	          }, {                                                                       
-                	        	        	  boxLabel  : 'FRI',			
-                	        	        	  name : 'searchDateType',		
-                	        	        	  inputValue : '5',	
+                	        	        	  xtype: 'displayfield',
+                	        	        	  width : 10
+                	        	          }, {
+                	        	        	  boxLabel  : 'FRI',
+                	        	        	  name : 'searchDateType',
+                	        	        	  inputValue : '5',
                 	        	        	  id : 'checkbox5'
-                	        	          }, {                                                                       
-                	        	        	  xtype: 'displayfield',		
-                	        	        	  width : 10							       
-                	        	          }, {                                                                       
-                	        	        	  boxLabel  : 'SAT',			
-                	        	        	  name : 'searchDateType',		
-                	        	        	  inputValue : '6',	
+                	        	          }, {
+                	        	        	  xtype: 'displayfield',
+                	        	        	  width : 10
+                	        	          }, {
+                	        	        	  boxLabel  : 'SAT',
+                	        	        	  name : 'searchDateType',
+                	        	        	  inputValue : '6',
                 	        	        	  id : 'checkbox6'
+                	        	          }, {
+                	        	        	  xtype: 'displayfield',
+                	        	        	  width : 10
                 	        	          }, {                                                                       
-                	        	        	  xtype: 'displayfield',		
-                	        	        	  width : 10                                 
-                	        	          }, {                                                                       
-                	        	        	  boxLabel  : 'SUN',			
-                	        	        	  name : 'searchDateType',		
-                	        	        	  inputValue : '7',	
+                	        	        	  boxLabel  : 'SUN',
+                	        	        	  name : 'searchDateType',
+                	        	        	  inputValue : '7',
                 	        	        	  id : 'checkbox7'
                 	        	          }]
                 	          }]
