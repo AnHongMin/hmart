@@ -20,7 +20,9 @@ import org.springframework.web.servlet.ModelAndView;
 import com.hmart.common.Constants;
 import com.hmart.common.util.DispatchAction;
 import com.hmart.common.util.RequestPrint;
+import com.hmart.common.util.json.JSONArray;
 import com.hmart.common.util.json.JSONException;
+import com.hmart.common.util.json.JSONObject;
 import com.hmart.common.util.json.JSONUtil;
 import com.hmart.sample.service.DeptDto;
 import com.hmart.sample.service.FileDto;
@@ -62,7 +64,6 @@ public class SampleController extends DispatchAction{
 	 * @throws Exception
 	 */
 	public ModelAndView test(HttpServletRequest req, HttpServletResponse res) throws Exception{
-//		RequestPrint.printRequestInfo(req);
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("sample/test");
 		return mav;
@@ -75,11 +76,24 @@ public class SampleController extends DispatchAction{
 	 * @return
 	 * @throws Exception
 	 */
-	public ModelAndView testData(HttpServletRequest req, HttpServletResponse res) throws Exception{
+	public void testData(HttpServletRequest req, HttpServletResponse res) throws Exception{
 		RequestPrint.printRequestInfo(req);
-		ModelAndView mav = new ModelAndView();
-		mav.setViewName("sample/testData");
-		return mav;
+		JSONArray data = new JSONArray();
+		int totalCount = 29;
+		for (int i = 1; i < totalCount; i++) {
+			JSONObject node = new JSONObject();
+			node.put("operator",i );
+			node.put("transaction", i);
+			node.put("ringtime", "ringtime"+i);
+			node.put("net", "net"+i);
+			node.put("item", "item"+i);
+			data.put(node);
+		}
+		
+		JSONObject node = new JSONObject();
+		node.put("totalCount", totalCount);
+		node.put("dataset", data);
+		ajaxResponseJson(req, res, JSONUtil.toJSON(node));
 	}
 	
 	/**
@@ -89,15 +103,24 @@ public class SampleController extends DispatchAction{
 	 * @return
 	 * @throws Exception
 	 */
-	public ModelAndView branchData(HttpServletRequest req, HttpServletResponse res) throws Exception{
+	public void branchData(HttpServletRequest req, HttpServletResponse res) throws Exception{
 		RequestPrint.printRequestInfo(req);
 		String stateid = req.getParameter("stateid");
 		int istateid = Integer.parseInt(stateid);
-		String data =  "{'branchid':'"+(istateid*1)+"', 'branchname':'branch"+(istateid*1)+"'},{'branchid':'"+(istateid*2)+"', 'branchname':'branch"+(istateid*2)+"'},{'branchid':'"+(istateid*3)+"', 'branchname':'branch"+(istateid*3)+"'}";
-		ModelAndView mav = new ModelAndView();
-		mav.setViewName("sample/branchData");
-		mav.addObject("data", data);
-		return mav;
+		
+		JSONArray data = new JSONArray();
+		int totalCount = 5;
+		for (int i = 1; i < totalCount; i++) {
+			JSONObject node = new JSONObject();
+			node.put("branchid",istateid*i );
+			node.put("branchname", "branch"+(istateid*i));
+			data.put(node);
+		}
+		
+		JSONObject node = new JSONObject();
+		node.put("totalCount", totalCount);
+		node.put("data", data);
+		ajaxResponseJson(req, res, JSONUtil.toJSON(node));
 	}
 	
 	/**
