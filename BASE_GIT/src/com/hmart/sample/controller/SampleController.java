@@ -62,14 +62,14 @@ public class SampleController extends DispatchAction{
 	 * @throws Exception
 	 */
 	public ModelAndView test(HttpServletRequest req, HttpServletResponse res) throws Exception{
-		RequestPrint.printRequestInfo(req);
+//		RequestPrint.printRequestInfo(req);
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("sample/test");
 		return mav;
 	}
 	
 	/**
-	 * test
+	 * testData
 	 * @param req HttpServletRequest
 	 * @param res HttpServletResponse
 	 * @return
@@ -79,6 +79,24 @@ public class SampleController extends DispatchAction{
 		RequestPrint.printRequestInfo(req);
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("sample/testData");
+		return mav;
+	}
+	
+	/**
+	 * branchData
+	 * @param req HttpServletRequest
+	 * @param res HttpServletResponse
+	 * @return
+	 * @throws Exception
+	 */
+	public ModelAndView branchData(HttpServletRequest req, HttpServletResponse res) throws Exception{
+		RequestPrint.printRequestInfo(req);
+		String stateid = req.getParameter("stateid");
+		int istateid = Integer.parseInt(stateid);
+		String data =  "{'branchid':'"+(istateid*1)+"', 'branchname':'branch"+(istateid*1)+"'},{'branchid':'"+(istateid*2)+"', 'branchname':'branch"+(istateid*2)+"'},{'branchid':'"+(istateid*3)+"', 'branchname':'branch"+(istateid*3)+"'}";
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("sample/branchData");
+		mav.addObject("data", data);
 		return mav;
 	}
 	

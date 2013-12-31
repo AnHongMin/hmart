@@ -2,26 +2,54 @@
 Ext.onReady(function() {
 	Ext.QuickTips.init();
 
-    // 콤보박스 데이터
-	var hr_states = Ext.create('Ext.data.Store', {
-		fields: ['key', 'value'],
-		data : [
-	        {"key":"s1", "value":"state1"},
-	        {"key":"s2", "value":"state2"},
-	        {"key":"s3", "value":"state3"}
-        ]
+    var hr_states_store = new Ext.data.Store({
+		id : 'hr_states_store',
+		proxy : {    			
+			type : 'ajax',
+			reader : {
+				type : 'json',
+				root : 'data'
+			},
+			url : '/vm/sample/stateData.vm',
+			method : 'GET'
+		}, 			
+		fields : [ { name : 'stateid', mapping : 'stateid' }, 
+		           { name : 'statename', mapping : 'statename'}
+		],
+		autoLoad : true,
+		listeners : {
+ 			load : function() {
+ 				Ext.getCmp('hr-search-form-state-combo').select('1');
+ 			}
+ 		}
+	}); 
+
+    var hr_branch_store = new Ext.data.Store({
+		id : 'hr_branch_store',
+		proxy : {
+			type : 'ajax',
+			reader : {
+				type : 'json',
+				root : 'data',
+				totalProperty : 'totalCount'
+			},
+			extraParams : {     		
+				stateid : 1
+			},
+			url : '/sample.do?method=branchData',
+			method : 'GET'
+		},
+		fields : [ { name : 'branchid', mapping : 'branchid' },
+		           { name : 'branchname', mapping : 'branchname'}
+		],
+		autoLoad : true,
+		listeners : {
+ 			load : function() {
+ 	 			Ext.getCmp('hr-search-form-branch-combo').select(this.getAt(0).get('branchid'));
+ 			}
+ 		}
 	});
 
-    // 콤보박스 데이터
-	var hr_branchs = Ext.create('Ext.data.Store', {
-		fields: ['key', 'value'],
-		data : [
-	        {"key":"b1", "value":"branch1"},
-	        {"key":"b2", "value":"branch2"},
-	        {"key":"b3", "value":"branch3"}
-        ]
-    });
-    
     // 검색
     var hr_searchTab = Ext.widget({
         title: 'Search',
@@ -37,13 +65,21 @@ Ext.onReady(function() {
                 	        	  xtype : 'container',
                 	        	  columnWidth : .3,
                 	        	  items : [{
+                	        		  id : 'hr-search-form-state-combo',
                 	        		  xtype: 'combobox',		
                 	        		  fieldLabel: 'State',
                 	        		  name: 'searchState',
                 	        		  anchor:'95%',
-                	        		  store:hr_states,
-                	        		  displayField:'value',
-                	        		  valueField:'key'
+                	        		  store:hr_states_store,
+                	        		  displayField:'statename',
+                	        		  valueField:'stateid',
+                	        		  listeners: {
+                	        			  select: function() {
+//                	        				  Ext.Msg.alert(this.getValue());
+                	        				  hr_branch_store.getProxy().extraParams.stateid = this.getValue();
+                	        				  hr_branch_store.load();
+                	        			  }
+                	        		  }
                 	        	  },{
                 	        		  xtype: 'datefield',
                 	        		  fieldLabel: 'Date From',
@@ -54,13 +90,14 @@ Ext.onReady(function() {
                 	        	  xtype : 'container',
                 	        	  columnWidth : .3,
                 	        	  items : [{
+                	        		  id : 'hr-search-form-branch-combo',
                 	        		  xtype: 'combobox',
                 	        		  fieldLabel: 'Branch',
                 	        		  name: 'searchBrach',
                 	        		  anchor:'95%',
-                	        		  store:hr_branchs,
-                	        		  displayField:'value',
-                	        		  valueField:'key'
+                	        		  store:hr_branch_store,
+                	        		  displayField:'branchname',
+                	        		  valueField:'branchid'
                 	        	  },{
                 	        		  xtype: 'datefield',
                 	        		  fieldLabel: 'Date To',
@@ -178,9 +215,9 @@ Ext.onReady(function() {
 			},
 			// 확장 파라미터 설정
 			extraParams: {
-				searchState : "",
+				searchState : "1",
 				searchDateFrom : "",
-				searchBrach : "",
+				searchBrach : "1",
 				searchDateTo : "",
 				searchDateType : ""	             
 			}
@@ -254,10 +291,10 @@ Ext.onReady(function() {
     		layout : 'column',
     		items : [{
     			xtype : 'displayfield',
-    			columnWidth : .2           			   
+    			columnWidth : .1           			   
     		},{
     			xtype : 'container',
-    			columnWidth : .8,
+    			columnWidth : .9,
     			layout : 'form',
     			items : [{
     				xtype : 'fieldcontainer',
@@ -265,20 +302,20 @@ Ext.onReady(function() {
     				items: [{
     					xtype : 'displayfield',
     					value : 'Best Performance Cashier ',
-    					width : 200							
+    					width : 200
     				},{
     					xtype : 'textfield',
-    					name : 'searchCashier',					
-    					width : 50,		
-    					allowBlank : false,		
+    					name : 'searchCashier',
+    					width : 50,
+    					allowBlank : false,
     					id : 'searchCashier',
-    					value : '110' 
+    					value : '110'
     				},{
-    					xtype : 'displayfield',		
-    					width : 10							    
+    					xtype : 'displayfield',
+    					width : 10
     				},{
-    					xtype : 'button',    	    
-    					text : 'Detail',							
+    					xtype : 'button',
+    					text : 'Detail',
     					width : 50,
     					handler: function() {
     						var form = this.up('form').getForm();
@@ -308,9 +345,21 @@ Ext.onReady(function() {
     					width : 175
     				}, {
     					xtype : 'textfield',		
-    					name: 'searchAmount',					
+    					name: 'searchAmount',
     					width : 55,
     					value : "10000" 
+    				},{
+    					xtype : 'displayfield',
+    					width : 10
+    				},{
+    					xtype : 'button',
+    					text : 'Confirm',
+    					width : 70,
+    					handler: function() {
+    						for(var i=1; i<6; i++){
+    							Ext.getCmp('result_data_'+i).setValue(this.up('form').getForm().getValues()['searchAmount']*i);	
+    						}
+    					}
     				}]
     			}, {
     				xtype : 'fieldcontainer',
@@ -320,7 +369,8 @@ Ext.onReady(function() {
     					value : 'Needed',
     					width : 55								
     				}, {
-    					xtype : 'textfield',		
+    					xtype : 'textfield',
+    					id : 'result_data_1',
     					width : 50							    	
     				}, {
     					xtype : 'displayfield',
@@ -333,11 +383,12 @@ Ext.onReady(function() {
     				xtype : 'fieldcontainer',
     				layout : 'hbox',
     				items : [{
-    					xtype : 'displayfield',		
+    					xtype : 'displayfield',
     					value : 'Total',
     					width : 55								
     				}, {
     					xtype : 'textfield',
+    					id : 'result_data_2',
     					width : 50							    	
     				}, {      
     					xtype : 'displayfield',
@@ -355,6 +406,7 @@ Ext.onReady(function() {
     					width : 100								
     				}, {
     					xtype : 'textfield',
+    					id : 'result_data_3',
     					width : 50							    	
     				}, {      
     					xtype : 'displayfield',
@@ -371,14 +423,15 @@ Ext.onReady(function() {
     					value : 'They Can cover',				
     					width : 100
     				}, {
-    					xtype : 'textfield',		
+    					xtype : 'textfield',
+    					id : 'result_data_4',
     					width : 50							    	
     				}, {      
     					xtype : 'displayfield',		
-    					width : 10							    
-    				}, {      
-    					xtype : 'displayfield',		
-    					value : 'items'							    
+    					width : 10
+    				}, {
+    					xtype : 'displayfield',
+    					value : 'items'
     				}]
     			}, {
     				xtype : 'fieldcontainer',
@@ -388,7 +441,8 @@ Ext.onReady(function() {
     					value : 'They Can cover',				
     					width : 100
     				}, {
-    					xtype : 'textfield',		
+    					xtype : 'textfield',
+    					id : 'result_data_5',
     					width : 50							    	
     				}, {
     					xtype : 'displayfield',		
@@ -401,7 +455,6 @@ Ext.onReady(function() {
     		}]
     	}]
     });
-
             	  
     var hr_descTab = {
     	xtype: 'fieldset',
@@ -410,7 +463,7 @@ Ext.onReady(function() {
     	collapsed : true,
     	items: [{
     		xtype : 'form',
-    		html : 'awegaerglkjearlkgjaelkrjgrg<br/>lkaejrlgkjaelkrjg<br/>nlkaejrgkljaerlkj'
+    		html : 'abcdefg<br/>  abcdefg<br/>      abcdefg'
     	}]
     };
     

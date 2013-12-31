@@ -1,0 +1,7 @@
+{
+    data : [
+        {"stateid":"1", "statename":"state1"},
+        {"stateid":"2", "statename":"state2"},
+        {"stateid":"3", "statename":"state3"}
+    ]
+}
