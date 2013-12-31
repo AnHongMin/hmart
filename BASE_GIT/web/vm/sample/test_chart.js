@@ -129,6 +129,7 @@ Ext.onReady(function() {
                 	        		  width : 200,
                 	        		  handler: function() {
                 	        			  this.up('form').getForm().reset();
+                	        			  hr_branch_store.removeAll();
                 	        		  }
                 	        	  }]
                 	          },{
