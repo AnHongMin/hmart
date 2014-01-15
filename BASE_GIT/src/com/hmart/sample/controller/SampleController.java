@@ -123,6 +123,32 @@ public class SampleController extends DispatchAction{
 		ajaxResponseJson(req, res, JSONUtil.toJSON(node));
 	}
 	
+	
+	/**
+	 * chartData
+	 * @param req HttpServletRequest
+	 * @param res HttpServletResponse
+	 * @return
+	 * @throws Exception
+	 */
+	public void chartData(HttpServletRequest req, HttpServletResponse res) throws Exception{
+		RequestPrint.printRequestInfo(req);
+		JSONArray data = new JSONArray();
+		String HOUR[] = {"08:00","09:00","10:00","11:00","12:00","13:00","14:00","15:00","16:00","17:00","18:00","19:00","20:00","21:00"};
+		String WORKINGMIN[] = {"4.07","14.45","22.02","24.07","30.07","31.45","31.03","29.52","37.77","37.93","39.95","20.70","12.95","1.47"};
+		for (int i = 0; i < HOUR.length; i++) {
+			JSONObject node = new JSONObject();
+			node.put("BRANCHID","18");
+			node.put("HOUR", HOUR[i]);
+			node.put("WORKINGMIN", WORKINGMIN[i]);
+			data.put(node);
+		}
+		
+		JSONObject node = new JSONObject();
+		node.put("data", data);
+		ajaxResponseJson(req, res, JSONUtil.toJSON(node));
+	}
+	
 	/**
 	 * Tree
 	 * @param req HttpServletRequest

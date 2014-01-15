@@ -8,7 +8,7 @@
 <link rel="stylesheet" href="/js/lib/ext-4.2.1.883/resources/css/ext-all-neptune.css" />
 <link rel="stylesheet" href="/js/lib/ext-4.2.1.883/resources/ext-theme-neptune/ext-theme-neptune-all.css" />
 
-<script type="text/javascript" src="/vm/sample/test_chart.js"></script>
+<script type="text/javascript" src="/vm/sample/test_chart1.js"></script>
 </head>
 <body>
 	
