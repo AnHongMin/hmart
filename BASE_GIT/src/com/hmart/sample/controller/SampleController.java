@@ -33,11 +33,11 @@ public class SampleController extends DispatchAction{
 	
 	@Resource(name="sampleImpl")
 	SampleService sampleImpl;
-	
+
 	/**
 	 * test
-	 * @param req HttpServletRequest
-	 * @param res HttpServletResponse
+	 * @param req
+	 * @param res
 	 * @return
 	 * @throws Exception
 	 */
@@ -52,9 +52,8 @@ public class SampleController extends DispatchAction{
 	
 	/**
 	 * testData
-	 * @param req HttpServletRequest
-	 * @param res HttpServletResponse
-	 * @return
+	 * @param req
+	 * @param res
 	 * @throws Exception
 	 */
 	@RequestMapping(value="/sample.do",params="method=testData")
@@ -80,9 +79,8 @@ public class SampleController extends DispatchAction{
 	
 	/**
 	 * branchData
-	 * @param req HttpServletRequest
-	 * @param res HttpServletResponse
-	 * @return
+	 * @param req
+	 * @param res
 	 * @throws Exception
 	 */
 	@RequestMapping(value="/sample.do",params="method=branchData")
@@ -106,12 +104,10 @@ public class SampleController extends DispatchAction{
 		ajaxResponseJson(req, res, JSONUtil.toJSON(node));
 	}
 	
-	
 	/**
 	 * chartData
-	 * @param req HttpServletRequest
-	 * @param res HttpServletResponse
-	 * @return
+	 * @param req
+	 * @param res
 	 * @throws Exception
 	 */
 	@RequestMapping(value="/sample.do",params="method=chartData")
