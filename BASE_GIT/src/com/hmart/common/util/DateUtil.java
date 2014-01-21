@@ -288,36 +288,6 @@ public class DateUtil {
 	}
 
 	/**
-	 * 일자만큼 더한 날짜
-	 * 
-	 * @param ymd
-	 *            12 June. 2012 (TUE)
-	 * @param amount
-	 *            일자
-	 * @return
-	 */
-	public static String getYmdaddDayTemplat(String ymd, int amount) {
-		ymd = getYmdTemplat(ymd);
-		Date dt = DateUtils.addDays(dateStringToDate(ymd), amount);
-		return DateFormatUtils.format(dt, "dd MMM. yyyy (EEE)", Locale.ENGLISH);
-	}
-
-	/**
-	 * 개월만큼 더한 날짜
-	 * 
-	 * @param ymd
-	 *            12 June. 2012 (TUE)
-	 * @param amount
-	 *            월
-	 * @return
-	 */
-	public static String getYmdaddMonthTemplat(String ymd, int amount) {
-		ymd = getYmdTemplat(ymd);
-		Date dt = DateUtils.addMonths(dateStringToDate(ymd), amount);
-		return DateFormatUtils.format(dt, "dd MMM. yyyy (EEE)", Locale.ENGLISH);
-	}
-
-	/**
 	 * 날짜 변환 템플릿
 	 * 
 	 * @param ymd
@@ -327,30 +297,6 @@ public class DateUtil {
 	public static String getYmdWeekTemplat(String ymd) {
 		Date dt = dateStringToDate(ymd);
 		return "<b>" + DateFormatUtils.format(dt, "dd MMM", Locale.ENGLISH) + "</b> " + DateFormatUtils.format(dt, "(EEE)", Locale.ENGLISH);
-	}
-
-	/**
-	 * 날짜 변환 
-	 * ymd 12 June. 2012 (TUE) -> 20120712, 20120712 -> ymd 12 June. 2012 (TUE)
-	 * 
-	 * @param ymd
-	 *            12 June. 2012 (TUE), 20120712
-	 * @return
-	 */
-	public static String getYmdTemplat(String ymd) {
-		if (ymd.length() == 8) {
-			Date dt = dateStringToDate(ymd);
-			return DateFormatUtils.format(dt, "dd MMM. yyyy (EEE)",
-					Locale.ENGLISH);
-		} else {
-			String monthNames[] = { "Jan.", "Feb.", "Mar.", "Apr.", "May.", "Jun.", "Jul.", "Aug.", "Sep.", "Oct.", "Nov.", "Dec." };
-			String months[] = { "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12" };
-			for (int i = 0; i < monthNames.length; i++) {
-				ymd = ymd.replaceAll(monthNames[i], months[i]);
-			}
-			ymd = ymd.split(" ")[2].substring(0, 4) + ymd.split(" ")[1] + ymd.split(" ")[0];
-			return ymd;
-		}
 	}
 
 	/**

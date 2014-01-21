@@ -39,6 +39,7 @@
 		<property name="password" value="${jdbc.password}" />
 	</bean>
 <!-- 	<jee:jndi-lookup id="dataSource" jndi-name="${jndi.name}" resource-ref="true"></jee:jndi-lookup> -->
+	<!-- //jdbc 설정 -->	
 
 	<!-- ibatis 설정 -->
 	<bean id="sqlMapClient" class="org.springframework.orm.ibatis.SqlMapClientFactoryBean">
@@ -51,9 +52,10 @@
 	</bean>
 	<!-- //ibatis 설정 -->
 	
+	<!-- transaction 설정 -->
 	<bean id="txManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
 		<property name="dataSource" ref="dataSource" />
 	</bean>
 	<tx:annotation-driven transaction-manager="txManager" />
-	<!-- //jdbc 설정 -->	
+	<!-- //transaction 설정 -->	
 </beans>

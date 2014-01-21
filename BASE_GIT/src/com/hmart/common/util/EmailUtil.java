@@ -50,7 +50,7 @@ public class EmailUtil {
 			// 이메일 메시지를 만듭니다.
 			HtmlEmail email = new HtmlEmail();
 			email.setCharset("UTF-8"); // 인코딩셋팅
-			email.setHostName("smtp.osstem.com"); // SMTP 서버
+			email.setHostName("smtp.xxx.com"); // SMTP 서버
 			email.addTo(str_to_email, str_to_name); // 받는사람 정보
 			email.setFrom(str_from_email, str_from_name); // 보내는사람 정보
 			email.setSubject(str_title); // 제목
