@@ -58,6 +58,7 @@ public class SampleController extends DispatchAction{
 	 */
 	@RequestMapping(value="/sample.do",params="method=testData")
 	public void testData(HttpServletRequest req, HttpServletResponse res) throws Exception{
+		// TODO 배포시 테스트 로그함수 제거
 		RequestPrint.printRequestInfo(req);
 		JSONArray data = new JSONArray();
 		int totalCount = 29;
