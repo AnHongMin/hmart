@@ -5,12 +5,15 @@ import java.util.ArrayList;
 
 import javax.annotation.Resource;
 
+import org.springframework.stereotype.Component;
+
 import com.hmart.sample.service.DeptDto;
 import com.hmart.sample.service.MemberDto;
 import com.hmart.sample.service.SampleDto;
 import com.hmart.sample.service.StateDto;
 import com.ibatis.sqlmap.client.SqlMapClient;
 
+@Component
 public class SampleDao{
 	@Resource(name="sqlMapClient")
 	private SqlMapClient sqlMap;

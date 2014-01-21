@@ -7,6 +7,7 @@ import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import javax.annotation.Resource;
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -15,6 +16,7 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.hmart.common.Constants;
@@ -46,6 +48,7 @@ public class SampleController extends DispatchAction{
 	
 //	SampleService sampleService = (SampleService) context.getBean("sampleImpl");
 	
+	@Resource(name="sampleImpl")
 	SampleService sampleImpl;
 	FileService fileImpl;
 	
@@ -64,6 +67,7 @@ public class SampleController extends DispatchAction{
 	 * @return
 	 * @throws Exception
 	 */
+	@RequestMapping(value="/sample.do",params="method=test")
 	public ModelAndView test(HttpServletRequest req, HttpServletResponse res) throws Exception{
 		ModelAndView mav = new ModelAndView();
 		ArrayList<StateDto> list = sampleImpl.getStateList();
@@ -79,6 +83,7 @@ public class SampleController extends DispatchAction{
 	 * @return
 	 * @throws Exception
 	 */
+	@RequestMapping(value="/sample.do",params="method=testData")
 	public void testData(HttpServletRequest req, HttpServletResponse res) throws Exception{
 		RequestPrint.printRequestInfo(req);
 		JSONArray data = new JSONArray();
@@ -106,6 +111,7 @@ public class SampleController extends DispatchAction{
 	 * @return
 	 * @throws Exception
 	 */
+	@RequestMapping(value="/sample.do",params="method=branchData")
 	public void branchData(HttpServletRequest req, HttpServletResponse res) throws Exception{
 		RequestPrint.printRequestInfo(req);
 		String stateid = req.getParameter("stateid");
@@ -134,6 +140,7 @@ public class SampleController extends DispatchAction{
 	 * @return
 	 * @throws Exception
 	 */
+	@RequestMapping(value="/sample.do",params="method=chartData")
 	public void chartData(HttpServletRequest req, HttpServletResponse res) throws Exception{
 		RequestPrint.printRequestInfo(req);
 		JSONArray data = new JSONArray();

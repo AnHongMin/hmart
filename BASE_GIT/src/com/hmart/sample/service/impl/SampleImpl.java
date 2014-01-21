@@ -6,6 +6,7 @@ import java.util.HashMap;
 
 import javax.annotation.Resource;
 
+import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.hmart.common.util.json.JSONArray;
@@ -17,6 +18,7 @@ import com.hmart.sample.service.SampleDto;
 import com.hmart.sample.service.SampleService;
 import com.hmart.sample.service.StateDto;
 
+@Component
 public class SampleImpl implements SampleService{
 	@Resource(name="sampleDao")
 	private SampleDao sampleDao;

@@ -3,12 +3,12 @@ package com.hmart.sample.service.impl;
 
 import java.io.File;
 import java.util.ArrayList;
-
 import java.util.Properties;
 
 import javax.annotation.Resource;
 
 import org.apache.commons.lang.ObjectUtils;
+import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -19,6 +19,7 @@ import com.hmart.sample.service.FileService;
  * 파일처리
  * @author
  */
+@Component
 public class FileImpl implements FileService{
 	@Resource(name="fileDao")
 	private FileDao fileDao;

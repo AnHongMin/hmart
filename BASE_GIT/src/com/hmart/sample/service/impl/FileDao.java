@@ -4,9 +4,12 @@ import java.util.ArrayList;
 
 import javax.annotation.Resource;
 
+import org.springframework.stereotype.Component;
+
 import com.ibatis.sqlmap.client.SqlMapClient;
 import com.hmart.sample.service.FileDto;
 
+@Component
 public class FileDao {
 	@Resource(name="sqlMapClient")
 	private SqlMapClient sqlMap;
