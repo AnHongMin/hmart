@@ -1,5 +1,6 @@
 package com.hmart.sample.service;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 /**
@@ -10,6 +11,8 @@ import java.util.ArrayList;
  *
  */
 public interface SampleService {
+	
+	public ArrayList<StateDto> getStateList() throws SQLException;
 	
 	/**
 	 * 목록 카운트

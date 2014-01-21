@@ -5,14 +5,26 @@ import java.util.ArrayList;
 
 import javax.annotation.Resource;
 
-import com.ibatis.sqlmap.client.SqlMapClient;
 import com.hmart.sample.service.DeptDto;
 import com.hmart.sample.service.MemberDto;
 import com.hmart.sample.service.SampleDto;
+import com.hmart.sample.service.StateDto;
+import com.ibatis.sqlmap.client.SqlMapClient;
 
 public class SampleDao{
 	@Resource(name="sqlMapClient")
 	private SqlMapClient sqlMap;
+	
+	
+	/**
+	 * 
+	 * @return
+	 * @throws SQLException
+	 */
+	@SuppressWarnings("unchecked")
+	public ArrayList<StateDto> getStateList() throws SQLException {
+		return (ArrayList<StateDto>)sqlMap.queryForList("State.getStateList");	
+	}
 	
 	/**
 	 * 목록 카운트

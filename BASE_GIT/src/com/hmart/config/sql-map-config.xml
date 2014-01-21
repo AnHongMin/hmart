@@ -24,8 +24,6 @@
 <!--   </transactionManager> -->
 	<!-- 샘플 -->
 	<sqlMap resource="com/hmart/sqlmap/Sample.xml"/>
+	<sqlMap resource="com/hmart/sqlmap/State.xml"/>
 	<sqlMap resource="com/hmart/sqlmap/File.xml"/>
-	
-	<!-- 조직도 -->
-	<sqlMap resource="com/hmart/sqlmap/Organization.xml"/>
 </sqlMapConfig>

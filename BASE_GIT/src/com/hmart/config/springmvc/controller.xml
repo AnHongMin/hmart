@@ -29,7 +29,6 @@
 		<property name="mappings">
 			<props>
 				<prop key="/sample.do">sampleController</prop>
-				<prop key="/organization.do">organizationController</prop>
 			</props>
 		</property>
 	</bean>
@@ -38,9 +37,5 @@
 		<property name="methodNameResolver" ref="methodNameResolver" />
 		<property name="sampleImpl" ref="sampleImpl" />
 		<property name="fileImpl" ref="fileImpl" />		
-	</bean>
-	<bean id="organizationController" class="com.hmart.organization.controller.OrganizationController">
-		<property name="methodNameResolver" ref="methodNameResolver" />
-		<property name="organizationImpl" ref="organizationImpl" />
 	</bean>
 </beans>

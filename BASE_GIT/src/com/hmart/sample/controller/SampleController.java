@@ -30,6 +30,7 @@ import com.hmart.sample.service.FileService;
 import com.hmart.sample.service.MemberDto;
 import com.hmart.sample.service.SampleDto;
 import com.hmart.sample.service.SampleService;
+import com.hmart.sample.service.StateDto;
 
 /**
  * 
@@ -65,6 +66,8 @@ public class SampleController extends DispatchAction{
 	 */
 	public ModelAndView test(HttpServletRequest req, HttpServletResponse res) throws Exception{
 		ModelAndView mav = new ModelAndView();
+		ArrayList<StateDto> list = sampleImpl.getStateList();
+		mav.addObject("list",list);
 		mav.setViewName("sample/test");
 		return mav;
 	}

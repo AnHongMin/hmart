@@ -15,12 +15,17 @@ import com.hmart.sample.service.FileService;
 import com.hmart.sample.service.MemberDto;
 import com.hmart.sample.service.SampleDto;
 import com.hmart.sample.service.SampleService;
+import com.hmart.sample.service.StateDto;
 
 public class SampleImpl implements SampleService{
 	@Resource(name="sampleDao")
 	private SampleDao sampleDao;
 	@Resource(name="fileImpl")
 	private FileService fileImpl;
+	
+	public ArrayList<StateDto> getStateList() throws SQLException {
+		return sampleDao.getStateList();
+	}
 	
 	public int getSampleListCount(SampleDto dto) throws Exception{
 		return sampleDao.getSampleListCount(dto);
