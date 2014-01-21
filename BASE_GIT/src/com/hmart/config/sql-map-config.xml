@@ -17,9 +17,9 @@
 <!--   <transactionManager type="JDBC"> -->
 <!--     <dataSource type="SIMPLE"> -->
 <!--       <property value="core.log.jdbc.driver.OracleDriver" name="JDBC.Driver"/> -->
-<!--       <property value="jdbc:oracle:thin:@211.111.222.70:1521:DB" name="JDBC.ConnectionURL"/> -->
-<!--       <property value="open" name="JDBC.Username"/> -->
-<!--       <property value="dnpqroqkf" name="JDBC.Password"/> -->
+<!--       <property value="jdbc:oracle:thin:@xxx.xxx.xxx.xx:1521:DB" name="JDBC.ConnectionURL"/> -->
+<!--       <property value="xxxx" name="JDBC.Username"/> -->
+<!--       <property value="xxxx" name="JDBC.Password"/> -->
 <!--     </dataSource> -->
 <!--   </transactionManager> -->
 	<sqlMap resource="com/hmart/sqlmap/Sample.xml"/>
