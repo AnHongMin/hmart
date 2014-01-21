@@ -15,3 +15,4 @@
 	
 5. velocity 설정
 	- com/hmart/config/springmvc/velocity.xml
+	- /web/WEB-INF/web.xml
