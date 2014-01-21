@@ -22,8 +22,5 @@
 <!--       <property value="dnpqroqkf" name="JDBC.Password"/> -->
 <!--     </dataSource> -->
 <!--   </transactionManager> -->
-	<!-- 샘플 -->
-	<sqlMap resource="com/hmart/sqlmap/Sample.xml"/>
 	<sqlMap resource="com/hmart/sqlmap/State.xml"/>
-	<sqlMap resource="com/hmart/sqlmap/File.xml"/>
 </sqlMapConfig>
