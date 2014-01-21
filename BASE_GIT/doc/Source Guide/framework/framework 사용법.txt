@@ -14,10 +14,7 @@
 	- web/js/{모듈명}/
 	ex) web/js/sample/
 	
-5. 모뉼 맵핑 설정
-	- com/hmart/config/dao/sample.xml
-	- com/hmart/config/impl/sample.xml
+5. 모듈 맵핑 설정
 	- com/hmart/config/springmvc/controller.xml
-	- com/hmart/config/springmvc/interceptor.xml
 	- com/hmart/config/sql-map-config.xml
 	- com/hmart/sqlmap/Sample.xml

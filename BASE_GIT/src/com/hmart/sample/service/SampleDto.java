@@ -1,6 +1,6 @@
 package com.hmart.sample.service;
 
-public class StateDto{
+public class SampleDto{
 	
 	private String stateID;
 	private String Name;

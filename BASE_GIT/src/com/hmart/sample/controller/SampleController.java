@@ -6,8 +6,6 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -17,8 +15,8 @@ import com.hmart.common.util.RequestPrint;
 import com.hmart.common.util.json.JSONArray;
 import com.hmart.common.util.json.JSONObject;
 import com.hmart.common.util.json.JSONUtil;
-import com.hmart.sample.service.StateDto;
-import com.hmart.sample.service.StateService;
+import com.hmart.sample.service.SampleDto;
+import com.hmart.sample.service.SampleService;
 
 /**
  * 
@@ -29,12 +27,12 @@ import com.hmart.sample.service.StateService;
  */
 @Controller
 public class SampleController extends DispatchAction{
-	private Log logger = LogFactory.getLog(this.getClass());
+//	private Log logger = LogFactory.getLog(this.getClass());
 	
 //	SampleService sampleService = (SampleService) context.getBean("sampleImpl");
 	
-	@Resource(name="stateImpl")
-	StateService stateImpl;
+	@Resource(name="sampleImpl")
+	SampleService sampleImpl;
 	
 	/**
 	 * test
@@ -46,7 +44,7 @@ public class SampleController extends DispatchAction{
 	@RequestMapping(value="/sample.do",params="method=test")
 	public ModelAndView test(HttpServletRequest req, HttpServletResponse res) throws Exception{
 		ModelAndView mav = new ModelAndView();
-		ArrayList<StateDto> list = stateImpl.getStateList();
+		ArrayList<SampleDto> list = sampleImpl.getStateList();
 		mav.addObject("list",list);
 		mav.setViewName("sample/test");
 		return mav;
