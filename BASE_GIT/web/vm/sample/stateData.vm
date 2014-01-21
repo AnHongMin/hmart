@@ -1,7 +1,0 @@
-{
-    data : [
-        {"regionid":"1", "regionname":"state1"},
-        {"regionid":"2", "regionname":"state2"},
-        {"regionid":"3", "regionname":"state3"}
-    ]
-}

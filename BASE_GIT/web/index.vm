@@ -9,7 +9,7 @@
 <link rel="stylesheet" href="/js/lib/ext-4.2.1.883/resources/ext-theme-neptune/ext-theme-neptune-all.css" />
 </head>
 <body>
-	#include("vm/inc/extJs.vm")
+	#include("/WEB-INF/view/inc/extJs.vm")
 	<script type="text/javascript">
 		Ext.onReady(function() {
 		

@@ -78,6 +78,28 @@ public class SampleController extends DispatchAction{
 	}
 	
 	/**
+	 * stateData
+	 * @param req
+	 * @param res
+	 * @throws Exception
+	 */
+	@RequestMapping(value="/sample.do",params="method=stateData")
+	public void stateData(HttpServletRequest req, HttpServletResponse res) throws Exception{
+		JSONArray data = new JSONArray();
+		int totalCount = 3;
+		for (int i = 1; i < totalCount; i++) {
+			JSONObject node = new JSONObject();
+			node.put("regionid",i );
+			node.put("regionname", "regionname"+(i));
+			data.put(node);
+		}
+		
+		JSONObject node = new JSONObject();
+		node.put("data", data);
+		ajaxResponseJson(req, res, JSONUtil.toJSON(node));
+	}
+	
+	/**
 	 * branchData
 	 * @param req
 	 * @param res

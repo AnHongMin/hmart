@@ -10,7 +10,7 @@ Ext.onReady(function() {
 				type : 'json',
 				root : 'data'
 			},
-			url : '/vm/sample/stateData.vm',
+			url : '/sample.do?method=stateData',
 			method : 'GET'
 		}, 			
 		fields : [ { name : 'regionid', mapping : 'regionid' }, 
