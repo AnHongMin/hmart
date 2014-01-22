@@ -1,27 +1,20 @@
 package com.hmart.sample.service.impl;
 
 import java.sql.SQLException;
-import java.util.ArrayList;
+import java.util.List;
 
 import javax.annotation.Resource;
 
+import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Component;
-
-import com.hmart.sample.service.SampleDto;
-import com.ibatis.sqlmap.client.SqlMapClient;
 
 @Component
 public class SampleDao{
-	@Resource(name="sqlMapClient")
-	private SqlMapClient sqlMap;
 	
-	/**
-	 * 
-	 * @return
-	 * @throws SQLException
-	 */
-	@SuppressWarnings("unchecked")
-	public ArrayList<SampleDto> getStateList() throws SQLException {
-		return (ArrayList<SampleDto>)sqlMap.queryForList("Sample.getStateList");	
+	@Resource(name="sqlSession")
+	private SqlSession sqlSession;   
+
+	public List<Object> getStateList() throws SQLException {
+		return sqlSession.selectList("Sample.getStateList");
 	}
 }

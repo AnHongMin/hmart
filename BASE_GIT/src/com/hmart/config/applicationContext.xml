@@ -43,17 +43,16 @@
 	</bean>
 <!-- 	<jee:jndi-lookup id="dataSource" jndi-name="${jndi.name}" resource-ref="true"></jee:jndi-lookup> -->
 	<!-- //jdbc 설정 -->	
-
-	<!-- ibatis 설정 -->
-	<bean id="sqlMapClient" class="org.springframework.orm.ibatis.SqlMapClientFactoryBean">
-		<property name="dataSource" ref="dataSource"/>
-		<property name="configLocation" value="classpath:com/hmart/config/sql-map-config.xml"/>
-	</bean>
 	
-	<bean id="sqlMapClientTemplate" class="org.springframework.orm.ibatis.SqlMapClientTemplate" >
-		<property name="sqlMapClient" ref="sqlMapClient"/>
+	<!-- mybatis 설정 -->
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource"/>
+		<property name="mapperLocations" value="classpath:com/hmart/mapper/*.xml"></property>
 	</bean>
-	<!-- //ibatis 설정 -->
+	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
+		<constructor-arg index="0" ref="sqlSessionFactory"></constructor-arg>
+	</bean>
+	<!-- //mybatis 설정 -->
 	
 	<!-- transaction 설정 -->
 	<bean id="txManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">

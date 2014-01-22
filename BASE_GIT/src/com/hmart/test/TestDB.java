@@ -1,6 +1,6 @@
 package com.hmart.test;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -16,10 +16,11 @@ public class TestDB {
 			ApplicationContext context = getContext();
 			SampleService sampleService = (SampleService)context.getBean("sampleImpl");
 			
-			ArrayList<SampleDto> list = sampleService.getStateList();
+			List<Object> list = sampleService.getStateList();
 
-			for (SampleDto dto : list) {
-				System.out.println(dto.getStateID() + "\t" + dto.getName());
+			for (Object dto : list) {
+				SampleDto temp = (SampleDto)dto;
+				System.out.println(temp.getStateID() + "\t" + temp.getName());
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

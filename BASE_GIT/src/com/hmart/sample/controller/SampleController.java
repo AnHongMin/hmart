@@ -1,6 +1,6 @@
 package com.hmart.sample.controller;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -15,7 +15,6 @@ import com.hmart.common.util.RequestPrint;
 import com.hmart.common.util.json.JSONArray;
 import com.hmart.common.util.json.JSONObject;
 import com.hmart.common.util.json.JSONUtil;
-import com.hmart.sample.service.SampleDto;
 import com.hmart.sample.service.SampleService;
 
 /**
@@ -44,7 +43,7 @@ public class SampleController extends DispatchAction{
 	@RequestMapping(value="/sample.do",params="method=test")
 	public ModelAndView test(HttpServletRequest req, HttpServletResponse res) throws Exception{
 		ModelAndView mav = new ModelAndView();
-		ArrayList<SampleDto> list = sampleImpl.getStateList();
+		List<Object> list = sampleImpl.getStateList();
 		mav.addObject("list",list);
 		mav.setViewName("sample/test");
 		return mav;

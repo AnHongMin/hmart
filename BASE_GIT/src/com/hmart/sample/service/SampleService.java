@@ -1,8 +1,8 @@
 package com.hmart.sample.service;
 
 import java.sql.SQLException;
-import java.util.ArrayList;
+import java.util.List;
 
 public interface SampleService {
-	public ArrayList<SampleDto> getStateList() throws SQLException;
+	public List<Object> getStateList() throws SQLException;
 }
