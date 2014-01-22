@@ -41,7 +41,6 @@
 		<property name="username" value="${jdbc.username}" />
 		<property name="password" value="${jdbc.password}" />
 	</bean>
-<!-- 	<jee:jndi-lookup id="dataSource" jndi-name="${jndi.name}" resource-ref="true"></jee:jndi-lookup> -->
 	<!-- //jdbc 설정 -->	
 	
 	<!-- mybatis 설정 -->
