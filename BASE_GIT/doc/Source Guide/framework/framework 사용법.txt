@@ -2,19 +2,17 @@
 	- Class : com/hmart/common/
 	- Js : web/js/common/
 	
-2. 모뉼  구현 : Class
+2. 모듈 구현 : Class
 	- com/hmart/{모뉼명}/
 	ex) com/hmart/sample/
 
 3. 모듈 구현 : Vm
-	- web/vm/{모듈명}/
-	ex) web/vm/sample/
+	- web/WEB-INF/view/{모듈명}/
+	ex) web/WEB-INF/view/sample/
 
 4. 모듈 구현 : Js
 	- web/js/{모듈명}/
 	ex) web/js/sample/
 	
-5. 모듈 맵핑 설정
-	- com/hmart/sample/controller/
-	- com/hmart/sample/service/
+5. 모듈 맵핑 설정 : Mybatis
 	- com/hmart/mapper/Sample.xml
