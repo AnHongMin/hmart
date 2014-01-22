@@ -15,6 +15,6 @@
 	ex) web/js/sample/
 	
 5. 모듈 맵핑 설정
-	- com/hmart/config/springmvc/controller.xml
-	- com/hmart/config/sql-map-config.xml
-	- com/hmart/sqlmap/Sample.xml
+	- com/hmart/sample/controller/
+	- com/hmart/sample/service/
+	- com/hmart/mapper/Sample.xml

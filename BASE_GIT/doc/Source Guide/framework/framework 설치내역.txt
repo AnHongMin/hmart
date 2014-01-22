@@ -3,11 +3,13 @@
 	- com/hmart/config/config.properties
 	
 2. sql 설정
-	- com/hmart/config/sql-map-config.xml
-	- com/hmart/config/dao/*.xml
+	- com/hmart/config/applicationContext.xml
+	: <!-- mybatis 설정 --><!-- //mybatis 설정 -->
+	- com/hmart/mapper/*.xml
 	
 3. controller, interceptor 설정
 	- com/hmart/config/springmvc/controller.xml
+	: <context:component-scan></context:component-scan>
 
 4. multipart 설정
 	- com/hmart/config/config.properties
