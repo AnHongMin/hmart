@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -16,6 +17,7 @@ import com.hmart.common.util.json.JSONArray;
 import com.hmart.common.util.json.JSONObject;
 import com.hmart.common.util.json.JSONUtil;
 import com.hmart.sample.service.SampleService;
+import com.hmart.sample.service.SampleVo;
 
 /**
  * 
@@ -149,5 +151,17 @@ public class SampleController extends DispatchAction{
 		JSONObject node = new JSONObject();
 		node.put("data", data);
 		ajaxResponseJson(req, res, JSONUtil.toJSON(node));
+	}
+	
+	/**
+	 * menuData
+	 * @param vo
+	 * @param req
+	 * @param res
+	 * @throws Exception
+	 */
+	@RequestMapping(value="/sample.do",params="method=menuData")
+	public void menuData(@ModelAttribute("vo")SampleVo vo, HttpServletRequest req, HttpServletResponse res) throws Exception{
+		ajaxResponseJson(req, res, JSONUtil.toJSON(sampleImpl.getApplicationmenumstList(vo)));
 	}
 }

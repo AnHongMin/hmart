@@ -16,10 +16,14 @@
             var store = Ext.create('Ext.data.TreeStore', { 
                 proxy: { 
                     type: 'ajax', 
-                    url : '/index-data.vm', 
+                    url : '/sample.do?method=menuData', 
+					//url : '/index-data.vm',
                     reader : { 
                     	type:'json' 
                     }
+					,extraParams : {     		
+						root : '003'
+					}
                 }, 
                // folderSort: true,
             	autoLoad : true 
@@ -33,7 +37,7 @@
                 renderTo: Ext.getBody(),
 				listeners : {
 					itemclick : function( obj, record, item, index, e, eOpts ){
-						location.href=record.raw.data_url;
+						//location.href=record.raw.data_url;
 					}
 				}
             });

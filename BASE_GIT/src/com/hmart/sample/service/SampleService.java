@@ -5,4 +5,5 @@ import java.util.List;
 
 public interface SampleService {
 	public List<Object> getStateList() throws SQLException;
+	public String getApplicationmenumstList(SampleVo vo) throws Exception;
 }

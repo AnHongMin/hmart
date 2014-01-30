@@ -9,4 +9,21 @@
        SELECT [StateID],[Name]
 		FROM [HMART].[dbo].[tblState]
     </select>
+    
+    <select id="getApplicationmenumstList" parameterType="com.hmart.sample.service.SampleVo" resultType="com.hmart.sample.service.ApplicationmenumstDto">
+       SELECT muapcode,
+       		muleg,	
+       		muupscrt,	
+       		mumyscrt,
+       		muregemp,	
+       		musysdate,
+       		mulink,	
+       		menuId,
+       		upmenuId
+		FROM [SALES].[dbo].[vwApplicationmenumst]
+		WHERE muapcode = ${root}
+		union all
+		select '',0,'','','',GETDATE(),'','${root}0','ROOT'
+		ORDER BY MENUID ASC
+    </select>
 </mapper>
