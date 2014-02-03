@@ -1,5 +1,6 @@
 package com.hmart.sample.controller;
 
+import java.net.URLDecoder;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -13,6 +14,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.hmart.common.util.DispatchAction;
 import com.hmart.common.util.RequestPrint;
+import com.hmart.common.util.WCEncrypt;
 import com.hmart.common.util.json.JSONArray;
 import com.hmart.common.util.json.JSONObject;
 import com.hmart.common.util.json.JSONUtil;
@@ -162,6 +164,13 @@ public class SampleController extends DispatchAction{
 	 */
 	@RequestMapping(value="/sample.do",params="method=menuData")
 	public void menuData(@ModelAttribute("vo")SampleVo vo, HttpServletRequest req, HttpServletResponse res) throws Exception{
+		String test = req.getParameter("test");
+		System.out.println(test);
+		System.out.println("-----------------");
+		test = URLDecoder.decode(test,"UTF-8");
+		System.out.println(test);
+		System.out.println("-----------------");
+		System.out.println(WCEncrypt.unEncrypt(test));
 		ajaxResponseJson(req, res, JSONUtil.toJSON(sampleImpl.getApplicationmenumstList(vo)));
 	}
 }

@@ -7,12 +7,16 @@
 <script src="/js/lib/ext-4.2.1.883/ext-theme-neptune.js"></script>
 <link rel="stylesheet" href="/js/lib/ext-4.2.1.883/resources/css/ext-all-neptune.css" />
 <link rel="stylesheet" href="/js/lib/ext-4.2.1.883/resources/ext-theme-neptune/ext-theme-neptune-all.css" />
+<script src="/js/WCEncrypt.js"></script>
 </head>
 <body>
 	#include("/WEB-INF/view/inc/extJs.vm")
+
 	<script type="text/javascript">
+		console.log(WCEncrypt.Encrypt('A'));
+		console.log(WCEncrypt.Encrypt('A'));
+		console.log(WCEncrypt.Encrypt('A'));
 		Ext.onReady(function() {
-		
             var store = Ext.create('Ext.data.TreeStore', { 
                 proxy: { 
                     type: 'ajax', 
@@ -22,7 +26,9 @@
                     	type:'json' 
                     }
 					,extraParams : {     		
-						root : '003'
+						root : '003',
+						test : encodeURIComponent(WCEncrypt.Encrypt('A1홍민%&'))
+						//test : encodeURIComponent('안홍민')
 					}
                 }, 
                // folderSort: true,

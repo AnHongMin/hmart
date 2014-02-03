@@ -7,6 +7,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.hmart.sample.service.SampleDto;
 import com.hmart.sample.service.SampleService;
+import com.hmart.sample.service.SampleVo;
 
 public class TestDB {
 	private static ApplicationContext context = null;
@@ -16,12 +17,17 @@ public class TestDB {
 			ApplicationContext context = getContext();
 			SampleService sampleService = (SampleService)context.getBean("sampleImpl");
 			
+			/*
 			List<Object> list = sampleService.getStateList();
 
 			for (Object dto : list) {
 				SampleDto temp = (SampleDto)dto;
 				System.out.println(temp.getStateID() + "\t" + temp.getName());
 			}
+			*/
+			SampleVo vo = new SampleVo();
+			vo.setRoot("003");
+			System.out.println(sampleService.getApplicationmenumstList(vo));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
