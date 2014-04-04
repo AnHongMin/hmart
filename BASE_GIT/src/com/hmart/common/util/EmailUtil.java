@@ -32,12 +32,11 @@ public class EmailUtil {
 	 * @param str_content
 	 *            내용
 	 * @param vec_files
-	 *            첨부파일
+	 *            첨부파일 경로
 	 * @return
 	 * @throws Exception
 	 */
-	@SuppressWarnings("rawtypes")
-	public static int setSendMail(String str_to_email, String str_to_name,String str_from_email, String str_from_name, String str_title,String str_content, Vector vec_files) throws Exception {
+	public static int setSendMail(String str_to_email, String str_to_name,String str_from_email, String str_from_name, String str_title,String str_content, Vector<String> vec_files) throws Exception {
 		int int_result = 0;
 
 		try {
@@ -59,9 +58,9 @@ public class EmailUtil {
 			// 첨부파일이 있으면 갯수 만큼 처리합니다.
 			if (vec_files != null) {
 				for (int_i = 0; int_i < vec_files.size(); int_i++) {
-					file = new File(vec_files.elementAt(int_i).toString());
+					file = new File(vec_files.elementAt(int_i));
 					if (file.isFile()) {
-						attachment.setPath(vec_files.elementAt(int_i).toString());
+						attachment.setPath(vec_files.elementAt(int_i));
 						attachment.setDisposition(EmailAttachment.ATTACHMENT);
 						attachment.setDescription("commons-email api");
 						attachment.setName(MimeUtility.encodeText(attachment.getName()));
