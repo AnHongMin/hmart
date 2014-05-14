@@ -23,3 +23,6 @@ asadmin create-domain biroot
 
 7.test 서버
 192.168.1.176
+
+8.도메인 제거
+asadmin remove-domain domainname 
